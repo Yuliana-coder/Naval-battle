@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script  defer src="js/app.js"></script>
+    <script  defer src="js/board.js"></script>
+    <script  defer src="js/game.js"></script>
+    <title>Морской бой</title>
+</head>
+<body>
+    <div class="wraper">
+        <header>
+            <h2 class="title">Морской бой</h2>
+        </header>
+        <div class="names-container">
+            <div class="name name-user"></div>
+            <div class="name">Компьютер</div>
+        </div>
+        <div class="main-container">
+            <div class="playing-field user-field"></div>
+            <div class="scoreboard">
+                <span class="text move"></span>
+                <span class="text injury"></span>
+            </div>
+            <div class="playing-field computer-field"></div>
+        </div>
+    </div>
+    <div class="modal-hidden">
+        <div class="name-wraper">
+            <span>Введите имя игрока</span>
+            <input type="text" size="30" class="text-name">
+        </div>
+        <button class="btn input-name">Ok</button>
+    </div>
+    <div class="modal-hidden">
+        <span class="completed-text"></span>
+        <button class="btn btn-close">ОК</button>
+    </div>
+</body>
+</html>

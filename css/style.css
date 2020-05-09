@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  outline: none;
+}
+
+body {
+  font-family: Tahoma, "Segoe UI", Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightblue;
+}
+
+/* Блок wraper */
+.wraper {
+  min-width: 320px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+}
+
+/* Заголовок */
+.title {
+  text-align: center;
+  padding-top: 20px;
+  font-weight: 500;
+  font-size: xx-large;
+  padding-top: 40px;
+}
+
+/* Контейнер с именами игроков */
+.names-container {
+  width: 100%;
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+/* Поле с именем, которое отображается при игре */
+.name {
+  font-family: cursive;
+  margin: auto 150px;
+  font-weight: 500;
+  font-size: xx-large;
+  padding-top: 40px;
+  text-align: center;
+}
+
+/* Основной контейнер с игровыми полями */
+.main-container {
+  width: 100%;
+  height: 600px;
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Игровое поле пользователя */
+.playing-field {
+  display: grid;
+  width: 400px;
+  height: 400px;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-columns: repeat(11, 1fr);
+  background-color: white;
+}
+
+/* Все пустые ячейки поля при отрисовке */
+.hidden-cell {
+  border-color: blue;
+  border-width: 1px;
+  border-style: dotted;
+}
+
+/* Отображение ячеек */
+.show-cell {
+  display: block;
+  border: solid;
+}
+
+.computer-field .hidden-cell:hover {
+  cursor: pointer;
+}
+
+/* Ячейки с символами */
+.symbol-cell {
+  font-family: cursive;
+  font-size: 20px;
+  font-weight: 550;
+  text-align: center;
+  background-color: white;
+  border-color: blue;
+  border-width: 1px;
+  border-style: dotted;
+}
+
+/*Ячейки кораблей */
+.ship-cell {
+  background: url(../img/ship.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* Раненные ячейки */
+.shot-cell {
+  background: url(../img/red.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* Ячейки, в которых промах */
+.miss-cell {
+  background: url(../img/hatch.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* Убитые ячейки */
+.wound-cell {
+  background: url(../img/shot.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* Модальное окно */
+.modal-hidden {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0.4em 0.4em 5px rgba(122, 122, 122, 0.5);
+  border-radius: 5px;
+  font-family: cursive;
+  font-size: large;
+}
+
+/* Модальное окно для ввода имени */
+.name-modal,
+.completed-modal {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Обертка для заголовка и поля ввода имени */
+.name-wraper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ввод имени */
+.text-name {
+  margin: 20px;
+}
+
+/* Табло с указаниями чей ход */
+.scoreboard {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Общий класс текст */
+.text {
+  font-weight: 500;
+  font-size: x-large;
+  padding-top: 40px;
+  text-align: center;
+}
+
+/* Общий класс кнопка для модальных окон */
+.btn {
+  font-weight: 500;
+  font-size: x-large;
+  border: none;
+  background-color: white;
+  color: gray;
+  opacity: 70%;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
+
+/* Текст в модальном окне при завершении игры */
+.completed-text {
+  text-align: center;
+}
