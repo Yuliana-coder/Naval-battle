@@ -153,7 +153,7 @@ class Board {
    * Проверка все ли корабли на поле убиты
    */
   isFilled() {
-    result = true;
+    let result = true;
     for (let i = 0; i < this.field.length; i++) {
       if (result) {
         for (let j = 0; j < this.field.length; j++) {

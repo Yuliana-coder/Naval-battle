@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
    * Обновление игровых поле и рандомная расстоновка кораблей перед началом игры
    */
   function createPlayingFields() {
-
     if (document.querySelector(".completed-modal")) {
       document
         .querySelector(".completed-modal")
@@ -94,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /**
    * Заполнение двумерного массива всех ячеек поля
-   * @param {array} arrayCells 
+   * @param {array} arrayCells
    */
   function convertToBoard(arrayCells) {
     let field = [];
@@ -124,25 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * Проверка завершения игры
-   * @param {Board} user 
-   * @param {Board*} computer 
-   */
-  function completedGame(user, computer) {
-    result = "";
-    if (user.isFilled()) {
-      result = "В этой игре победил компьютер! Попробуйте снова!";
-    }
-    if (computer.isFilled()) {
-      result = "Ура! Поздравляем! Вы победили!";
-    }
-    return result;
-  }
-
-  /**
    * Ход игры
-   * @param {Board} user 
-   * @param {Board} computer 
+   * @param {Board} user
+   * @param {Board} computer
    */
   function Game(user, computer) {
     //обновление поля с информацией о ходе
@@ -166,22 +149,37 @@ document.addEventListener("DOMContentLoaded", () => {
             let y = user.getRandomInt(0, 9);
             setTimeout(() => {
               whoseMove.innerHTML = "Ваш ход";
-              while (!user.checkShot(cellsUser[x][y])) {
+              let check = false;
+              while (!check) {
+                check = user.checkShot(cellsUser[x][y]);
                 x = user.getRandomInt(0, 9);
                 y = user.getRandomInt(0, 9);
+                //проверка завершения игры
+                if (user.isFilled()) {
+                  document
+                    .querySelectorAll(".modal-hidden")[1]
+                    .classList.add("completed-modal");
+                  document
+                    .querySelector(".btn-close")
+                    .addEventListener("click", createPlayingFields);
+                  document.querySelector(".completed-text").innerHTML =
+                    "В этой игре победил компьютер! Попробуйте снова!";
+                  console.log(user.getTakenCells);
+                }
               }
             }, 700);
           }
           //проверка завершения игры
-          let completed = completedGame(user, computer);
-          if (completedGame(user, computer) != "") {
+          if (computer.isFilled()) {
             document
               .querySelectorAll(".modal-hidden")[1]
               .classList.add("completed-modal");
             document
               .querySelector(".btn-close")
               .addEventListener("click", createPlayingFields);
-            document.querySelector(".completed-text").innerHTML = completed;
+            document.querySelector(".completed-text").innerHTML =
+              "Ура! Поздравляем! Вы победили!!";
+            console.log(user.getTakenCells);
           }
         });
       }
